@@ -1,0 +1,18 @@
+<div class="container pt-5 mt-5">
+  <h2>Tutorial</h2>
+  <p class="text-muted">Welcome!</p>
+  <i class="bi bi-plus-square text-success" (click)="addForm()">Add</i>
+
+  <div class="row">
+    <div class="col-4" *ngFor="let item of products">
+      <div class="card p-5 text-center">
+        <h2>{{ item.name }}</h2>
+        <p>{{ item.desc }}</p>
+        <div class="d-flex justify-content-around">
+          <i class="bi bi-pen text-primary" (click)="editProduct(item)"></i>
+          <i class="bi bi-trash text-danger" (click)="deleteProduct(item)"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

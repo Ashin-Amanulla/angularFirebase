@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "tutorial-temp-76047": {
+      "hosting": {
+        "ngFirebase": [
+          "tutorial-temp-76047"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "tutorial-temp-76047"
+  }
+}
