@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HeroService } from '../hero.service';
 import { Product } from '../interface/product';
 
@@ -16,7 +17,7 @@ export class AddFormComponent {
     name: '',
     desc: ''
   }
-  constructor(public fb: FormBuilder, private hero: HeroService) {
+  constructor(public fb: FormBuilder, private hero: HeroService , private router:Router) {
 
     //form creation
     this.productForm = this.fb.group({
@@ -43,6 +44,7 @@ export class AddFormComponent {
         alert("Data added")
       }
       this.productForm.reset()
+      this.router.navigate(['/'])
     })
   }
 

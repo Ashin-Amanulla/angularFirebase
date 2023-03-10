@@ -13,7 +13,11 @@ export class HeroService {
   constructor(private fs: Firestore) { }
 
 
+  //? addDoc, collection, collectionData, deleteDoc, doc, Firestore, updateDoc etc are functions provided by firestore . 
+
+
   //Add product data
+
 
   addProduct(product: Product) {
     product.id = doc(collection(this.fs, 'id')).id;
