@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from './interface/product';
-import { addDoc, collection, collectionData, deleteDoc, doc, Firestore, updateDoc } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, deleteDoc, doc, Firestore, getDoc, updateDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 
@@ -33,12 +33,27 @@ export class HeroService {
     return collectionData(productsRef, { idField: 'id' }) as Observable<Product[]>
   }
 
+  //read data by id
 
+  async getProductById(id: any): Promise<any> {
+
+    let docRef = doc(this.fs, 'Products', id);
+    try {
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        return docSnap.data()
+      } else {
+        console.log("Document does not exist")
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
   // delete 
 
   deleteProduct(product: Product) {
     console.log(product.id)
-    let docRef = doc(this.fs, "Products",product.id)
+    let docRef = doc(this.fs, "Products", product.id)
 
     return deleteDoc(docRef)
   }
@@ -46,7 +61,7 @@ export class HeroService {
 
   //update
   updateProduct(id: any, updateData: any) {
-    let docRef = doc(this.fs, "Products",id)
+    let docRef = doc(this.fs, "Products", id)
     return updateDoc(docRef, updateData)
 
 
